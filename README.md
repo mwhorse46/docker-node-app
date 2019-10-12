@@ -1,24 +1,35 @@
 Node App
 ================
 
-A starting point for node.js based apps. Uses Docker to setup a node, mysql, and redis server. Webpack is used to bundle the client JS.
+A starting point for node.js based apps. Uses Docker to setup a node.js, mysql, and redis server. Webpack is used to bundle the client JS.
 
 ![preview](./preview.png)
 
 ## Getting Started on Development
 
-#### Check the settings in `.env`
-Change the `SESSION_SECRET` and update the app and mysql ports if they are going to conflict with existing services
+### Prerequisite
+You need [docker installed](https://docs.docker.com/compose/install/)
 
-#### Start the app containers 
-A node server, mysql database, and redis service will be started. The node server will auto restart after crashing or when changes are made to `/app/server`
+### 1.) Check the settings in `.env`
+You should change the `SESSION_SECRET` and update the app and mysql ports if they are going to conflict with any of your existing services
+
+### 2.) Start the app containers 
+A node.js server, mysql database, and redis service will be started. The node server will auto restart after crashing or when changes are made to `/app/server`
 
 ```bash
 $ cd /this/dir
 $ docker-compose up
 ```
 
-#### Start the developing
+If all goes as planned, you should see this message:
+
+```
+App running: localhost:8080
+```
+
+> port may be different if you canged it in `.env`
+
+### 3.) Start the developing
 [Webpack](https://webpack.js.org/) will be used to watch the files in `/app/client` and rebuild them.
 
 ```bash
@@ -32,9 +43,11 @@ $ npm run dev
 ## Commands
 Some commands for developing
 
-- `npm run cd-server` - "change directory" to the node server
-- `npm run install` - install missing/new JS dependencies
+- `docker-compose up` - start the app
+- `docker-compose down` - end the app
 - `npm run dev` - watch for client changes and rebuild
+- `npm run install` - install missing/new JS dependencies
+- `npm run cd-server` - "change directory" to the node server
 
 ## Dependency notes
 `jQuery` is imported by Backbone.js even though its not a hard dependency. Because of this, 
