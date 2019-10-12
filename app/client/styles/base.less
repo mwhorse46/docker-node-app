@@ -1,0 +1,33 @@
+@import '~bui/helpers/colors.less';
+
+:root {
+    --theme: var(--blue);
+    --formControlTheme: var(--theme);
+}
+
+html, body {
+    min-height: 100%;
+    background: var(--dark);
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    font-family: Roboto, sans-serif;
+    background: var(--gray-100);
+    color: var(--gray-900);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 800ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    &.show {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}

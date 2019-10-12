@@ -1,0 +1,43 @@
+{
+  "name": "nodeapp",
+  "version": "1.0.0",
+  "description": "Node App Template",
+  "main": "client/index.js",
+  "scripts": {
+    "start": "npm install --quiet && npm run client-build && npm run server",
+    "server": "node_modules/forever/bin/forever -w --watchDirectory server -l error.log -a server/index.js",
+    "cd-server": "docker exec -it nodeapp bash",
+    "install": "docker exec -it nodeapp npm install",
+    "dev": "docker exec -it nodeapp npm run client",
+    "client": "webpack --env dev --display errors-only --display-entrypoints --display-used-exports",
+    "client-build": "webpack --env prod --display minimal"
+  },
+  "author": "Kevin Jantzer",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "backbone": "^1.4.0",
+    "bcrypt": "^3.0.6",
+    "blackstone-ui": "git+https://github.com/kjantzer/bui.git",
+    "body-parser": "^1.18.2",
+    "connect-redis": "^4.0.3",
+    "express": "^4.9.7",
+    "express-fileupload": "^1.1.6-alpha.5",
+    "express-session": "^1.17.0",
+    "lit-element": "^2.2.1",
+    "mysql": "^2.17.1",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "redis": "^2.8.0"
+  },
+  "devDependencies": {
+    "css-loader": "^3.2.0",
+    "forever": "^0.15.3",
+    "less": "^3.10.3",
+    "less-loader": "^5.0.0",
+    "raw-loader": "^0.5.1",
+    "style-loader": "^1.0.0",
+    "webpack": "^4.20.2",
+    "webpack-bundle-analyzer": "^3.5.2",
+    "webpack-cli": "^3.1.2"
+  }
+}

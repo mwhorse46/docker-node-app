@@ -1,0 +1,5 @@
+/db/my.cnf
+.DS_Store
+node_modules
+.cache
+dist
