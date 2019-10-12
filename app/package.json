@@ -13,7 +13,7 @@
     "client-build": "webpack --env prod --display minimal"
   },
   "author": "Kevin Jantzer",
-  "license": "UNLICENSED",
+  "license": "ISC",
   "dependencies": {
     "backbone": "^1.4.0",
     "bcrypt": "^3.0.6",
