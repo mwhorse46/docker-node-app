@@ -3,7 +3,11 @@ Node App
 
 A starting point for node.js based apps. Uses Docker to setup a node.js, mysql, and redis server. Webpack is used to bundle the client JS.
 
-![preview](./preview.png)
+[![preview](./preview.png)](https://i.imgur.com/YajROul.mp4)
+
+<video>
+<source src="https://i.imgur.com/YajROul.mp4" type="video/mp4">
+</video>
 
 ## Getting Started on Development
 
