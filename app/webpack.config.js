@@ -67,7 +67,7 @@ module.exports = env => { const DEV = env == 'dev'; return {
             'menu': 'bui/presenters/menu',
 
             // backbone requires jquery...use our own version
-            'jquery': path.resolve(__dirname, 'client/js/jquery')
+            'jquery': path.resolve(__dirname, 'client/js/lib/jquery')
         }
     },
     
