@@ -83,6 +83,9 @@ module.exports = class API {
 			}
 		})
 
+        if( Class.api.root )
+            path = Class.api.root + path
+
         if( this.opts.root )
             path = this.opts.root + path
         

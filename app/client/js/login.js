@@ -66,6 +66,7 @@ customElements.define('a-login', class extends LitElement{
 
             <form-control material="outline" label="Password" key="password">
                 <input slot="control" type="password" id="password" @keydown=${this.onKeydown} autocomplete="current-password" value="password">
+                <b-icon name="eye-off" @click=${this.toggleSeePW} slot="suffix"></b-icon>
             </form-control>
 
             <b-btn block lg color="primary" @click=${this.login}>Sign In</b-btn>
@@ -73,6 +74,12 @@ customElements.define('a-login', class extends LitElement{
 
         </b-paper>
     `}
+
+    toggleSeePW(e){
+        let input = e.currentTarget.previousElementSibling
+        input.type = input.type == 'text' ? 'password' : 'text'
+        e.currentTarget.name = input.type == 'text' ? 'eye-1' : 'eye-off'
+    }
 
     onKeydown(e){
         if( e.key == 'Enter' )

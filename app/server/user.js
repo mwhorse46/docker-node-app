@@ -2,11 +2,20 @@ const db = require('./db')
 const bcrypt = require('bcrypt')
 var crypto = require("crypto");
 
+const MIN_PW_LEN = 8
 const serializedUsers = new Map()
 
 module.exports = class User {
+    
+    static get api(){return {
+        routes: [
+            // ['put', '/user/:id?', 'update'],
+            // ['patch', '/user/:id?', 'update'],
+            ['put', '/user/:id/change-password', 'changePassword']
+        ]
+    }}
 
-    constructor(attrs){
+    constructor(attrs={}){
         this.attrs = attrs
 
         this.attrs.email_hash = null
@@ -30,8 +39,45 @@ module.exports = class User {
         return JSON.stringify(this.toJSON())
     }
 
+    async update(req){
+        
+        let results = await db.q(`UPDATE users SET ? WHERE ?`, [
+            req.body,
+            {id: req.user.id}
+        ])
+
+        // TODO: improve how attrs are updated?
+        req.user.attrs = Object.assign(req.user.attrs, req.body)
+
+        return req.body
+    }
+
     async verifyPassword(pw){
         return bcrypt.compare(pw, this.attrs.password)
+    }
+
+    async changePassword(req){
+
+        let user = await User.findByID(req.user.id)
+        let {currentPW, newPW} = req.body
+
+        if( currentPW == newPW )
+            throw new Error('same password')
+
+        if( !newPW || newPW.length < MIN_PW_LEN )
+            throw new Error('too short')
+
+        if( !await user.verifyPassword(currentPW) )
+            throw new Error('invalid current password')
+
+        newPW = await User.hashPassword(newPW)
+        
+        user.update({
+            body: {password: newPW},
+            user: user
+        })
+
+        return true
     }
 
     static async encryptPassword(pw){

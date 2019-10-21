@@ -3,6 +3,8 @@ import {Model} from 'backbone'
 
 export class User extends Model {
 
+    urlRoot(){ return '/api/user' }
+
     constructor(){
         super()
         

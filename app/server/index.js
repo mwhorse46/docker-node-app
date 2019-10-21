@@ -108,9 +108,9 @@ app.get('/hash-pw/:pw', async (req, res)=>{
     res.send(hash)
 })
 
-// new API(app, [
-//     // import api classes here
-// ], {root: '/api'})
+new API(app, [
+    User
+], {root: '/api'})
 
 // start up node server
 const server = http.Server(app);

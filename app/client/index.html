@@ -20,8 +20,13 @@
     
     <h1>Your node app</h1>
     <p>Begin coding your app in: /client/js/index.js</p>
+    
     <br>
-    <b-btn onclick="logout()">Sign out</b-btn>
+    
+    <div>
+        <b-btn icon="user" color="primary" onclick="goTo('account')">User Account</b-btn>
+        <b-btn onclick="logout()">Sign out</b-btn>
+    </div>
 
     <script src="./index.js"></script>
 
