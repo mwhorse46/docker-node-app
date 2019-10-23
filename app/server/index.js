@@ -5,7 +5,7 @@ const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy;
 
 const User = require('./user')
-const API = require('./api')
+const API = require('bui-server/api')
 
 const PORT = 80
 global.ROOT_PATH = path.join(__dirname, '..');

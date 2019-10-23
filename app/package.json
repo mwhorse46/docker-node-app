@@ -5,7 +5,7 @@
   "main": "client/index.js",
   "scripts": {
     "start": "npm install --quiet && npm run client-build && npm run server",
-    "server": "node_modules/forever/bin/forever -w --watchDirectory server -l error.log -a server/index.js",
+    "server": "pm2-runtime start server.config.js",
     "cd-server": "docker exec -it nodeapp bash",
     "install": "docker exec -it nodeapp npm install",
     "dev": "docker exec -it nodeapp npm run client",
@@ -18,6 +18,7 @@
     "backbone": "^1.4.0",
     "bcrypt": "^3.0.6",
     "blackstone-ui": "git+https://github.com/kjantzer/bui.git",
+    "bui-server": "git+https://github.com/kjantzer/bui-server.git",
     "body-parser": "^1.18.2",
     "connect-redis": "^4.0.3",
     "express": "^4.9.7",
@@ -31,7 +32,6 @@
   },
   "devDependencies": {
     "css-loader": "^3.2.0",
-    "forever": "^0.15.3",
     "less": "^3.10.3",
     "less-loader": "^5.0.0",
     "raw-loader": "^0.5.1",
